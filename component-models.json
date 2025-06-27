@@ -190,6 +190,20 @@
         "value": "",
         "name": "description",
         "label": "Description"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "value": "",
+        "name": "cta",
+        "label": "CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "value": "",
+        "name": "ctaText",
+        "label": "CTA Text"
       }
     ]
   },
