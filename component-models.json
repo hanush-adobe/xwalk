@@ -142,6 +142,58 @@
     ]
   },
   {
+    "id": "banner-card",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "value": "",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "value": "h1",
+        "name": "titleType",
+        "label": "Title Type",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          },
+          {
+            "name": "h6",
+            "value": "h6"
+          }
+        ]
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "value": "",
+        "name": "description",
+        "label": "Description"
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {
