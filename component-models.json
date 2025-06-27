@@ -185,7 +185,7 @@
         ]
       },
       {
-        "component": "aem-content",
+        "component": "text",
         "valueType": "string",
         "value": "",
         "name": "description",
