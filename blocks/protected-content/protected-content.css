@@ -3,32 +3,32 @@
   color: white;
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 25px rgb(0 0 0 / 15%);
   margin: 20px 0;
 }
 
 .protected-content h3 {
-  margin: 0 0 16px 0;
+  margin: 0 0 16px;
   font-size: 24px;
   font-weight: 600;
 }
 
 .protected-content p {
-  margin: 0 0 20px 0;
+  margin: 0 0 20px;
   font-size: 16px;
   opacity: 0.9;
 }
 
 .protected-info {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgb(255 255 255 / 10%);
   padding: 20px;
   border-radius: 8px;
   margin: 20px 0;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgb(255 255 255 / 20%);
 }
 
 .protected-info h4 {
-  margin: 0 0 12px 0;
+  margin: 0 0 12px;
   font-size: 18px;
   color: #fff;
 }
@@ -40,7 +40,7 @@
 
 .protected-info li {
   margin: 8px 0;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgb(255 255 255 / 90%);
 }
 
 .user-actions {
@@ -49,9 +49,9 @@
 }
 
 .logout-action-btn {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgb(255 255 255 / 20%);
   color: white;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgb(255 255 255 / 30%);
   padding: 12px 24px;
   border-radius: 6px;
   font-size: 14px;
@@ -61,8 +61,8 @@
 }
 
 .logout-action-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: rgb(255 255 255 / 30%);
+  border-color: rgb(255 255 255 / 50%);
   transform: translateY(-2px);
 }
 
