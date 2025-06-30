@@ -10,16 +10,14 @@ export const getCurrentUser = () => {
 };
 
 // Check if user is authenticated
-export const isAuthenticated = () => {
-  return getCurrentUser() !== null;
-};
+export const isAuthenticated = () => getCurrentUser() !== null;
 
 // Redirect to login if not authenticated
 export const requireAuth = async (redirectUrl = '/') => {
   if (!isAuthenticated()) {
     // Store the intended destination
     sessionStorage.setItem('authRedirect', window.location.href);
-    
+
     // Show login modal if available, otherwise redirect to home
     const loginModal = document.getElementById('login-modal');
     if (loginModal) {

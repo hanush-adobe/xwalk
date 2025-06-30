@@ -293,13 +293,13 @@ header nav .nav-tools {
   transition: background-color 0.2s ease;
 }
 
+.logout-btn {
+  background: #dc2626;
+}
+
 .login-btn-header:hover,
 .logout-btn:hover {
   background: #2563eb;
-}
-
-.logout-btn {
-  background: #dc2626;
 }
 
 .logout-btn:hover {
@@ -307,7 +307,7 @@ header nav .nav-tools {
 }
 
 /* Mobile responsive auth section */
-@media (max-width: 900px) {
+@media (width <= 900px) {
   .auth-section {
     padding: 8px 0;
     border-top: 1px solid #e5e7eb;

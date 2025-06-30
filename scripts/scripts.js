@@ -1,15 +1,15 @@
 import {
-  loadHeader,
-  loadFooter,
+  decorateBlocks,
   decorateButtons,
   decorateIcons,
   decorateSections,
-  decorateBlocks,
   decorateTemplateAndTheme,
-  waitForFirstImage,
+  loadCSS,
+  loadFooter,
+  loadHeader,
   loadSection,
   loadSections,
-  loadCSS,
+  waitForFirstImage,
 } from './aem.js';
 
 /**
@@ -58,7 +58,7 @@ async function loadFonts() {
   }
 }
 
-function autolinkModals(element) {
+export function autolinkModals(element) {
   element.addEventListener('click', async (e) => {
     const origin = e.target.closest('a');
 
@@ -69,7 +69,6 @@ function autolinkModals(element) {
     }
   });
 }
-
 
 /**
  * Builds all synthetic blocks in a container element.

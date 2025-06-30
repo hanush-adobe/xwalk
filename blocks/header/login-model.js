@@ -1,24 +1,25 @@
 // Mock API for authentication
 const mockAuthenticate = async (username, password) => {
   // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await new Promise((resolve) => {
+    setTimeout(resolve, 1000);
+  });
 
   // Mock credentials - in real app, this would be an API call
   const validCredentials = [
     { username: 'admin', password: 'admin123' },
     { username: 'user', password: 'user123' },
-    { username: 'demo', password: 'demo123' }
+    { username: 'demo', password: 'demo123' },
   ];
 
   const isValid = validCredentials.some(
-    cred => cred.username === username && cred.password === password
+    (cred) => cred.username === username && cred.password === password,
   );
 
   if (isValid) {
     return { success: true, user: { username } };
-  } else {
-    throw new Error('Invalid username or password');
   }
+  throw new Error('Invalid username or password');
 };
 
 // Authentication state management
@@ -47,6 +48,21 @@ export const getLoginModalDom = () => {
   const loginModal = document.createElement('dialog');
   loginModal.className = 'login-modal';
   loginModal.id = 'login-modal';
+
+  // Helper functions defined first to avoid hoisting issues
+  function showError(message) {
+    const errorMessage = loginModal.querySelector('#error-message');
+    errorMessage.textContent = message;
+    errorMessage.className = 'error-message show';
+    errorMessage.style.display = 'block';
+  }
+
+  function showSuccess(message) {
+    const errorMessage = loginModal.querySelector('#error-message');
+    errorMessage.textContent = message;
+    errorMessage.className = 'success-message show';
+    errorMessage.style.display = 'block';
+  }
 
   loginModal.innerHTML = `
     <div class="login-modal-content">
@@ -167,18 +183,6 @@ export const getLoginModalDom = () => {
       btnLoading.style.display = 'none';
     }
   });
-
-  function showError(message) {
-    errorMessage.textContent = message;
-    errorMessage.className = 'error-message show';
-    errorMessage.style.display = 'block';
-  }
-
-  function showSuccess(message) {
-    errorMessage.textContent = message;
-    errorMessage.className = 'success-message show';
-    errorMessage.style.display = 'block';
-  }
 
   return loginModal;
 };
