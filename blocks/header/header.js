@@ -1,5 +1,6 @@
-import { getMetadata } from '../../scripts/aem.js';
+import { getMetadata, loadCSS } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
+import { getLoginModalDom, openLoginModal, getCurrentUser, logout, checkExistingAuth } from './login-model.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -108,6 +109,12 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
  * @param {Element} block The header block element
  */
 export default async function decorate(block) {
+  // Load the login modal CSS
+  await loadCSS(`${window.hlx.codeBasePath}/blocks/header/login-model.css`);
+  
+  // Check for existing authentication
+  const existingUser = checkExistingAuth();
+  
   // load nav as fragment
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
@@ -124,6 +131,48 @@ export default async function decorate(block) {
     const section = nav.children[i];
     if (section) section.classList.add(`nav-${c}`);
   });
+
+  // Add login modal to the page
+  const loginModal = getLoginModalDom();
+  document.body.append(loginModal);
+
+  // Add login/logout button to nav tools
+  const navTools = nav.querySelector('.nav-tools');
+  if (navTools) {
+    const authButton = document.createElement('div');
+    authButton.className = 'auth-section';
+    
+    const updateAuthButton = () => {
+      const currentUser = getCurrentUser();
+      if (currentUser) {
+        authButton.innerHTML = `
+          <span class="user-greeting">Hello, ${currentUser.username}!</span>
+          <button type="button" class="logout-btn">Logout</button>
+        `;
+        const logoutBtn = authButton.querySelector('.logout-btn');
+        logoutBtn.addEventListener('click', logout);
+      } else {
+        authButton.innerHTML = `
+          <button type="button" class="login-btn-header">Login</button>
+        `;
+        const loginBtn = authButton.querySelector('.login-btn-header');
+        loginBtn.addEventListener('click', openLoginModal);
+      }
+    };
+
+    // Initial setup
+    updateAuthButton();
+    
+    // Add to nav tools
+    navTools.append(authButton);
+    
+    // Listen for storage changes to update auth state across tabs
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'authUser') {
+        updateAuthButton();
+      }
+    });
+  }
 
   const navBrand = nav.querySelector('.nav-brand');
   const brandLink = navBrand.querySelector('.button');

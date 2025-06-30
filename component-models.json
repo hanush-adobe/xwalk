@@ -280,5 +280,24 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "whats-new",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "value": "",
+        "name": "title",
+        "label": "Title"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      }
+    ]
   }
 ]

@@ -266,3 +266,62 @@ header nav .nav-sections ul > li > ul > li {
 header nav .nav-tools {
   grid-area: tools;
 }
+
+/* Authentication section styles */
+.auth-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-greeting {
+  font-size: 14px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.login-btn-header,
+.logout-btn {
+  background: #3b82f6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.login-btn-header:hover,
+.logout-btn:hover {
+  background: #2563eb;
+}
+
+.logout-btn {
+  background: #dc2626;
+}
+
+.logout-btn:hover {
+  background: #b91c1c;
+}
+
+/* Mobile responsive auth section */
+@media (max-width: 900px) {
+  .auth-section {
+    padding: 8px 0;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 8px;
+    justify-content: center;
+  }
+  
+  .user-greeting {
+    font-size: 13px;
+  }
+  
+  .login-btn-header,
+  .logout-btn {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+}
