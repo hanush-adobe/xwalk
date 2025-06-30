@@ -1,6 +1,8 @@
 import { getMetadata, loadCSS } from '../../scripts/aem.js';
 import { loadFragment } from '../fragment/fragment.js';
-import { getLoginModalDom, openLoginModal, getCurrentUser, logout, checkExistingAuth } from './login-model.js';
+import {
+  getLoginModalDom, openLoginModal, getCurrentUser, logout,
+} from './login-model.js';
 
 // media query match that indicates mobile/tablet width
 const isDesktop = window.matchMedia('(min-width: 900px)');
@@ -111,10 +113,10 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 export default async function decorate(block) {
   // Load the login modal CSS
   await loadCSS(`${window.hlx.codeBasePath}/blocks/header/login-model.css`);
-  
+
   // Check for existing authentication
-  const existingUser = checkExistingAuth();
-  
+  // const existingUser = checkExistingAuth();
+
   // load nav as fragment
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
@@ -141,7 +143,7 @@ export default async function decorate(block) {
   if (navTools) {
     const authButton = document.createElement('div');
     authButton.className = 'auth-section';
-    
+
     const updateAuthButton = () => {
       const currentUser = getCurrentUser();
       if (currentUser) {
@@ -162,10 +164,10 @@ export default async function decorate(block) {
 
     // Initial setup
     updateAuthButton();
-    
+
     // Add to nav tools
     navTools.append(authButton);
-    
+
     // Listen for storage changes to update auth state across tabs
     window.addEventListener('storage', (e) => {
       if (e.key === 'authUser') {

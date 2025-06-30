@@ -2,7 +2,7 @@ import { decorateProtectedContent } from '../../scripts/auth.js';
 
 export default function decorate(block) {
   decorateProtectedContent(block);
-  
+
   // If user is authenticated, show the protected content
   const storedUser = localStorage.getItem('authUser');
   if (storedUser) {
@@ -25,7 +25,7 @@ export default function decorate(block) {
         </div>
       </div>
     `;
-    
+
     // Add logout functionality
     const logoutBtn = block.querySelector('.logout-action-btn');
     if (logoutBtn) {
